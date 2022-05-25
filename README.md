@@ -64,16 +64,16 @@ REMEMBER to terminate these docker processes once they are not needed. Use `dock
 
 To deploy this new application on ECS, it will need to reside in Elastic Container Registry. Authenticate yourself with ECR on the AWS CLI with the following command
 
-    aws ecr get-login-password --region <REGION> | \\
-    docker login \\
-    --username AWS \\
+    aws ecr get-login-password --region <REGION> | \
+    docker login \
+    --username AWS \
     --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com
   
 Once logged in, create a repository to hold the images
 
-    aws ecr create-repository \\
-    --repository-name <NAME> \\
-    --image-scanning-configuration scanOnPush=true \\
+    aws ecr create-repository \
+    --repository-name <NAME> \
+    --image-scanning-configuration scanOnPush=true \
     --region <REGION>
 
 Name the repository the same as the image tag. This repository is only meant for this individual demonstration image and avoids naming confusion when pushing it to ECR.
